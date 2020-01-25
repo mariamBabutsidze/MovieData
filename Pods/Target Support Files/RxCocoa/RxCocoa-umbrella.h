@@ -10,14 +10,10 @@
 #endif
 #endif
 
-#import "RxCocoaRuntime 3.h"
 #import "RxCocoaRuntime.h"
-#import "_RX 3.h"
 #import "_RX.h"
-#import "_RXDelegateProxy 3.h"
 #import "_RXDelegateProxy.h"
 #import "_RXKVOObserver.h"
-#import "_RXObjCRuntime 3.h"
 #import "_RXObjCRuntime.h"
 #import "RxCocoa.h"
 

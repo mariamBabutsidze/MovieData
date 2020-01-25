@@ -1,0 +1,6 @@
+framework module RDExtensionsSwift {
+  umbrella header "RDExtensionsSwift-umbrella.h"
+
+  export *
+  module * { export * }
+}

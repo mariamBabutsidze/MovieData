@@ -71,7 +71,7 @@ class MovieDetailsHeaderViewCell: UITableViewCell {
         collectionView.reloadData()
     }
     
-    func update(favourite: Bool){
+    private func update(favourite: Bool){
         favouriteButton.setImage(UIImage(named: favourite ? "heart_full" : "heart"))
     }
 }
@@ -113,6 +113,8 @@ extension MovieDetailsHeaderViewCell{
     }
     
     @IBAction func favouriteClicked(_ sender: Any) {
+        movieDetails?.isFavourite.toggle()
+        update(favourite: movieDetails?.isFavourite ?? false)
         delegate?.favouriteClicked()
     }
 }

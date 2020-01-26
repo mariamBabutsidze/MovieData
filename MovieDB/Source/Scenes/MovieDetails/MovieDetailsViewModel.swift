@@ -18,6 +18,7 @@ protocol MovieDetailsViewModelType {
 
 protocol MovieDetailsViewModelInputs {
     func loadMovieDetails()
+    func changeFavourite()
 }
 
 protocol MovieDetailsViewModelOutputs: ErrorViewModelProtocol {
@@ -52,7 +53,19 @@ extension MovieDetailsViewModel: MovieDetailsViewModelInputs {
         MovieDetails.load(id: id, success: { [weak self] movieDetails in
             self?.movieDetails = movieDetails
             self?._movieDidLoad.accept(())
-        }, fail: self.standardFailBlock)
+            }, fail: self.standardFailBlock)
+    }
+    
+    func changeFavourite(){
+        movieDetails?.isFavourite.toggle()
+        guard let movieDetails = movieDetails else { return }
+        do{
+            if movieDetails.isFavourite{
+                try MovieDetails.deleteMovieDetail(id: movieDetails.id)
+            } else{
+                try MovieDetails.save(movieDetails: movieDetails)
+            }
+        } catch{ }
     }
 }
 

@@ -109,7 +109,7 @@ extension MovieDetailsViewController: MovieDetailsHeaderViewCellDelegate{
     }
     
     func favouriteClicked() {
-        
+        viewModel.inputs.changeFavourite()
     }
     
 }

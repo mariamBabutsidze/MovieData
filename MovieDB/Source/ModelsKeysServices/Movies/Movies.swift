@@ -34,7 +34,7 @@ class Movie: Decodable{
     required init(from decoder: Decoder) throws {
         let values = try decoder.container(keyedBy: Key.Coding.self)
         self.id = try values.decodeIfPresent(Int.self, forKey: .id) ?? .zero
-        self.isFavourite = false
+        self.isFavourite = try MovieDetails.containsMovieDetail(id: id)
         self.iconUrl = URL(string: "\(Path.load)\(try values.decodeIfPresent(String.self, forKey: .poster_path) ?? .empty)")
     }
     

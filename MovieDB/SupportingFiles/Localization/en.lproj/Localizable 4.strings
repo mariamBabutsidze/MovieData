@@ -1,0 +1,22 @@
+/*
+ Localizable.strings
+ LibertyMobileBank
+ 
+ Created by Giorgi Iashvili on 16.07.18.
+ Copyright © 2018 Giorgi Iashvili. All rights reserved.
+ */
+
+// MARK: MovieDetails
+"MovieDetailsOriginalTitle" = "Original Title";
+"MovieDetailsOverview" = "Overview";
+"MovieDetailsReleaseDate" = "Release Date";
+
+// MARK: NoInternet
+"NoInternetError" = "Error";
+"NoInternetDescription" = "Connection could not be made.";
+"NoInternetButtonTitle" = "Try Again";
+
+// MARK: Filter
+"FilterTopRated" = "Top Rated";
+"FilterPopular" = "Popular";
+"FilterFavourite" = "Favourite";

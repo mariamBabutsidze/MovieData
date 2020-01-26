@@ -1,0 +1,12 @@
+/* 
+  InfoPlist.strings
+  Biliki
+
+  Created by Giorgi Iashvili on 7/25/19.
+  Copyright © 2019 Giorgi Iashvili. All rights reserved.
+*/
+
+"NSLocationWhenInUseUsageDescription" = "Shows your location on the map and helps improve OpenStreetMap.";
+"NSCameraUsageDescription"                                                              =               "This will allow to capture the photo and set the profile picture";
+"NSPhotoLibraryUsageDescription"                                                        =               "This will let you upload the picture from iPhone gallery";
+"NSLocationWhenInUseDescription" = "This will let you know weather";

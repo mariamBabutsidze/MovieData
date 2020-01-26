@@ -23,13 +23,12 @@ class MovieNavigationController: UINavigationController {
     {
         super.viewDidLayoutSubviews()
         self.updateNavigationItems()
-        
     }
     
     private func setupNavigationBar()
     {
-        navigationBar.barTintColor = UIColor.black
-        navigationBar.tintColor = UIColor.MovieDB.darkGrey
+        navigationBar.barTintColor = UIColor.MovieDB.lightGrey
+        navigationBar.tintColor = UIColor.white
         navigationBar.shadowImage = UIImage()
         navigationBar.titleTextAttributes = [NSAttributedString.Key.font: UIFont.poppins(type: .semiBold, size: 14 * Constants.ScreenFactor)]
     }
@@ -39,8 +38,27 @@ class MovieNavigationController: UINavigationController {
         for i in 0 ..< self.viewControllers.count
         {
             let navigationItem = self.viewControllers[i].navigationItem
-            navigationItem.setLeftBarButton(backButtonItem(), animated: false)
+            navigationItem.setLeftBarButtonItems([i == 0 ? menuButtonItem() : backButtonItem(), self.titleItem(self.viewControllers[i].title)], animated: false)
         }
+    }
+    
+    private func titleItem(_ title: String?) -> UIBarButtonItem
+    {
+        let label = UILabel()
+        label.textColor = .white
+        label.font = UIFont.poppins(type: .bold, size: 15 * Constants.ScreenFactor)
+        label.text = title
+        return UIBarButtonItem(customView: label)
+    }
+    
+    private func menuButtonItem() -> UIBarButtonItem
+    {
+        let item = UIBarButtonItem(image: UIImage(named: "burger"), style: .plain, target: self, action: #selector(self.menuClicked(sender:)))
+        return item
+    }
+    
+    @objc private func menuClicked(sender: UIBarButtonItem) {
+        self.toggleLeftViewAnimated(self)
     }
     
     private func backButtonItem() -> UIBarButtonItem

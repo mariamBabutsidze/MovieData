@@ -41,7 +41,7 @@ class MovieListViewController: UIViewController {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
-        navigationController?.setNavigationBarHidden(true, animated: false)
+        navigationController?.setNavigationBarHidden(false, animated: true)
     }
     
     override func viewWillLayoutSubviews() {
@@ -53,7 +53,7 @@ class MovieListViewController: UIViewController {
         collectionView.delegate = self
         collectionView.dataSource = self
         refreshControlSpinner.tintColor = UIColor.MovieDB.green
-        collectionView.contentInset = UIEdgeInsets(top: .zero, left: insets, bottom: .zero, right: insets)
+        collectionView.contentInset = UIEdgeInsets(top: insets, left: insets, bottom: .zero, right: insets)
         let collectionWidth = view.frame.width - 2 * insets
         if let flowLayout = collectionView?.collectionViewLayout as? UICollectionViewFlowLayout {
             flowLayout.minimumInteritemSpacing = 10 * Constants.ScreenFactor
@@ -106,5 +106,11 @@ extension MovieListViewController: UICollectionViewDelegate, UICollectionViewDat
         let item = viewModel.outputs.itemAt(index: indexPath)
         let moviewDetails = MovieDetailsViewController.load(with: MovieDetailsViewModel(id: item.id))
         navigationController?.pushViewController(moviewDetails, animated: true)
+    }
+}
+
+extension MovieListViewController: FilterViewControllerDelegate{
+    func changeFilter(type: Filter) {
+        viewModel.inputs.changeFilters(type: type)
     }
 }

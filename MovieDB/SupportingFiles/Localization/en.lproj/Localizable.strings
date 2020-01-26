@@ -15,3 +15,8 @@
 "NoInternetError" = "Error";
 "NoInternetDescription" = "Connection could not be made.";
 "NoInternetButtonTitle" = "Try Again";
+
+// MARK: Filter
+"FilterTopRated" = "Top Rated";
+"FilterPopular" = "Popular";
+"FilterFavourite" = "Favourite";

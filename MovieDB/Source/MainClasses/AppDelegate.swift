@@ -8,6 +8,7 @@
 
 import UIKit
 import Reachability
+import LGSideMenuController
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -29,7 +30,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         let nav = MovieNavigationController.init(rootViewController: movieList)
         
-        self.window?.rootViewController = nav
+        let sideMenu = LGSideMenuController(rootViewController: nav)
+        sideMenu.view.backgroundColor = UIColor.MovieDB.darkGrey
+        sideMenu.leftViewPresentationStyle = .scaleFromBig
+        sideMenu.leftViewWidth = 200 * Constants.ScreenFactor
+        let leftViewController = FilterViewController.load(with: FilterViewModel())
+        leftViewController.delegate = movieList
+        sideMenu.leftViewController = leftViewController
+        self.window?.rootViewController = sideMenu
         
         self.window?.makeKeyAndVisible()
     }

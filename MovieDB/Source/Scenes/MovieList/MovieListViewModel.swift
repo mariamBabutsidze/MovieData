@@ -18,6 +18,7 @@ protocol MovieListViewModelType {
 
 protocol MovieListViewModelInputs {
     func loadMovies(refresh: Bool)
+    func changeFilters(type: Filter)
 }
 
 protocol MovieListViewModelOutputs: ErrorViewModelProtocol {
@@ -35,6 +36,9 @@ class MovieListViewModel {
     private var page = 1
     private var loading = false
     private var pageNumber: Int = .zero
+    private var filters: [Filter] = []
+    private let average = 8
+    private let count = 10000
     
     init()
     {
@@ -49,7 +53,9 @@ extension MovieListViewModel: MovieListViewModelInputs {
         if !loading && (page == 1 || page < pageNumber){
             loading = true
             page = refresh ? 1 : (page + 1)
-            Movies.load(page: page, success: { [weak self]  movies in
+            let avg : Int? = filters.contains(Filter.topRated) ? average : nil
+            let sum : Int? = filters.contains(Filter.popular) ? count : nil
+            Movies.load(page: page, count: sum, average: avg, success: { [weak self]  movies in
                 let page = movies?.page
                 let res = movies?.results ?? []
                 if page == 1{
@@ -63,6 +69,15 @@ extension MovieListViewModel: MovieListViewModelInputs {
                 self?._moviesDidLoad.accept(())
             }, fail: self.standardFailBlock)
         }
+    }
+    
+    func changeFilters(type: Filter){
+        if filters.contains(type){
+            filters.remove(type)
+        } else{
+            filters.append(type)
+        }
+        loadMovies(refresh: true)
     }
 }
 

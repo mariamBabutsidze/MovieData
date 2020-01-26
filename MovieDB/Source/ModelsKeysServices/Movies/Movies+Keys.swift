@@ -28,7 +28,8 @@ extension Movies{
     struct ParsingKeys{
         enum Parse: String{
             case page
-            case Longitude
+            case vote_count = "vote_count.gte"
+            case vote_average = "vote_average.gte"
         }
     }
 }

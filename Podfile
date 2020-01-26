@@ -10,6 +10,7 @@ def shared_pods
     pod 'SnapKit'
     pod 'AXPhotoViewer'
     pod 'ReachabilitySwift'
+    pod 'LGSideMenuController'
     rx_pods
 end
 

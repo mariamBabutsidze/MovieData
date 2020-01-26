@@ -29,10 +29,12 @@ class Movie: Decodable{
     
     var id: Int
     var iconUrl: URL?
+    var isFavourite: Bool
     
     required init(from decoder: Decoder) throws {
         let values = try decoder.container(keyedBy: Key.Coding.self)
         self.id = try values.decodeIfPresent(Int.self, forKey: .id) ?? .zero
+        self.isFavourite = false
         self.iconUrl = URL(string: "\(Path.load)\(try values.decodeIfPresent(String.self, forKey: .poster_path) ?? .empty)")
     }
     

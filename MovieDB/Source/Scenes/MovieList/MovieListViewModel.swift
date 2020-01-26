@@ -62,8 +62,11 @@ extension MovieListViewModel: MovieListViewModelInputs {
                     self?.pageNumber = movies?.totalResults ?? .zero
                     self?.movies.removeAll()
                 }
+                let fav = self?.filters.contains(Filter.favourite) ?? false
                 res.forEach({
-                    self?.movies.append($0)
+                    if (fav && $0.isFavourite) || !fav{
+                        self?.movies.append($0)
+                    }
                 })
                 self?.loading = false
                 self?._moviesDidLoad.accept(())

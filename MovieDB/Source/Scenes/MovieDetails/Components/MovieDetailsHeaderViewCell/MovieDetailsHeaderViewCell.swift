@@ -41,7 +41,8 @@ class MovieDetailsHeaderViewCell: UITableViewCell {
         blurEffectView.frame = detailView.bounds
         blurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         detailView.insertSubview(blurEffectView, at: 0)
-        
+        ratingView.isHidden = true
+        titleLabel.isHidden = true
     }
     
     private func setCollectionView(){
@@ -55,6 +56,8 @@ class MovieDetailsHeaderViewCell: UITableViewCell {
     }
     
     func fill(with movieDetails: MovieDetails){
+        ratingView.isHidden = false
+        titleLabel.isHidden = false
         self.movieDetails = movieDetails
         let flow = collectionView.collectionViewLayout as? UICollectionViewFlowLayout
         flow?.itemSize = CGSize(width: self.frame.width, height: self.frame.height)
@@ -64,7 +67,7 @@ class MovieDetailsHeaderViewCell: UITableViewCell {
         }
         rateView?.setRating(rating: movieDetails.vote, numberOfRates: movieDetails.voteCount)
         titleLabel.text = movieDetails.title
-        //favouriteButton.setImage(UIImage(named: tour.isFavourite ? "heart_full" : "heart"))
+        favouriteButton.setImage(UIImage(named: movieDetails.isFavourite ? "heart_full" : "heart"))
         collectionView.reloadData()
     }
     

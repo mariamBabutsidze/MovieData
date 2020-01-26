@@ -12,6 +12,7 @@ extension MovieDetails{
     
     struct Key{
         enum Coding: String, CodingKey{
+            case id
             case title
             case poster_path
             case overview

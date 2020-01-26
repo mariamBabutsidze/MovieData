@@ -13,7 +13,9 @@ extension Notification.Name {
     private class Keys {
         
         static let languageDidChange = "languageDidChange"
+        static let favouriteChanged = "favouriteChanged"
     }
     
     static var languageDidChange: Notification.Name { get { return Notification.Name(Keys.languageDidChange) } }
+    static var favouriteChanged: Notification.Name { get { return Notification.Name(Keys.favouriteChanged) } }
 }

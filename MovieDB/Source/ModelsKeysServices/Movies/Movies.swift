@@ -38,4 +38,10 @@ class Movie: Decodable{
         self.iconUrl = URL(string: "\(Path.load)\(try values.decodeIfPresent(String.self, forKey: .poster_path) ?? .empty)")
     }
     
+    init(id: Int, icon: String, isFavourite: Bool) {
+        self.id = id
+        self.iconUrl = URL(string: icon)
+        self.isFavourite = isFavourite
+    }
+    
 }

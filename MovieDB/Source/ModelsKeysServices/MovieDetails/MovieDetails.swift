@@ -43,4 +43,18 @@ class MovieDetails: NSManagedObject, Decodable{
         self.voteCount = try values.decodeIfPresent(Int.self, forKey: .vote_count) ?? .zero
         self.isFavourite = false
     }
+    
+    func createCopy(movieDetais: MovieDetails) -> MovieDetails{
+        let newMovie = MovieDetails.init(entity: NSEntityDescription.entity(forEntityName: Self.className, in: CoreDataManager.shared.context)!, insertInto: nil)
+        newMovie.id = movieDetais.id
+        newMovie.title = movieDetais.title
+        newMovie.overview = movieDetais.overview
+        newMovie.iconURLValue = movieDetais.iconURLValue
+        newMovie.originalTitle = movieDetais.originalTitle
+        newMovie.releaseDate = movieDetais.releaseDate
+        newMovie.vote = movieDetais.vote
+        newMovie.voteCount = movieDetais.voteCount
+        newMovie.isFavourite = movieDetais.isFavourite
+        return newMovie
+    }
 }

@@ -35,6 +35,7 @@ class MovieDetailsViewModel {
     private var movieDetails: MovieDetails?
     private var id: Int?
     private let numberOfRow = 2
+    private var isFav = false
     
     init(id: Int)
     {
@@ -52,18 +53,21 @@ extension MovieDetailsViewModel: MovieDetailsViewModelInputs {
         }
         MovieDetails.load(id: id, success: { [weak self] movieDetails in
             self?.movieDetails = movieDetails
+            self?.isFav = movieDetails?.isFavourite ?? false
             self?._movieDidLoad.accept(())
             }, fail: self.standardFailBlock)
     }
     
     func changeFavourite(){
-        movieDetails?.isFavourite.toggle()
+        guard let id = id else { return }
         guard let movieDetails = movieDetails else { return }
+        NotificationCenter.default.post(name: .favouriteChanged, object: nil, userInfo: ["id": id])
+        isFav.toggle()
         do{
-            if movieDetails.isFavourite{
-                try MovieDetails.deleteMovieDetail(id: movieDetails.id)
-            } else{
+            if isFav{
                 try MovieDetails.save(movieDetails: movieDetails)
+            } else{
+                try MovieDetails.deleteMovieDetail(id: id)
             }
         } catch{ }
     }

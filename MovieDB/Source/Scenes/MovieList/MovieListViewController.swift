@@ -26,9 +26,14 @@ class MovieListViewController: UIViewController {
         ep.viewModel = viewModel
         return ep
     }
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self)
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        NotificationCenter.default.addObserver(self, selector: #selector(favouriteChanged(notification:)), name: .favouriteChanged, object: nil)
         setupCollectionView()
         bindObservables()
         loadMovies()
@@ -47,6 +52,15 @@ class MovieListViewController: UIViewController {
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
         collectionView.collectionViewLayout.invalidateLayout()
+    }
+    
+    @objc private func favouriteChanged(notification: NSNotification){
+        if let id = notification.userInfo?["id"] as? Int{
+            let val = viewModel.inputs.changeMovie(id: id)
+            if val{
+                collectionView.reloadData()
+            }
+        }
     }
     
     private func setupCollectionView(){

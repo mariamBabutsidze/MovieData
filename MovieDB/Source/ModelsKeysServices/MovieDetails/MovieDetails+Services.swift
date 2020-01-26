@@ -32,7 +32,8 @@ extension MovieDetails{
     }
     
     static func save(movieDetails: MovieDetails) throws {
-        CoreDataManager.shared.context.insert(movieDetails)
+        let movie = movieDetails.createCopy(movieDetais: movieDetails)
+        CoreDataManager.shared.context.insert(movie)
         try CoreDataManager.shared.context.save()
     }
     
@@ -40,7 +41,10 @@ extension MovieDetails{
         let fetchRequest = NSFetchRequest<MovieDetails>(entityName: MovieDetails.className)
         fetchRequest.predicate = NSPredicate(format: "id == \(id)")
         let movieDetail: [MovieDetails] = try CoreDataManager.shared.context.fetch(fetchRequest)
-        return movieDetail.first
+        if let movie = movieDetail.first{
+            return movie.createCopy(movieDetais: movie)
+        }
+        return nil
     }
     
     static func deleteMovieDetail(id: Int) throws{
@@ -54,7 +58,7 @@ extension MovieDetails{
         try CoreDataManager.shared.context.save()
     }
     
-    static func fetchSavedMovieDetail(id: Int) throws -> [MovieDetails] {
+    static func fetchSavedMovieDetails() throws -> [MovieDetails] {
         let fetchRequest = NSFetchRequest<MovieDetails>(entityName: MovieDetails.className)
         let movieDetail: [MovieDetails] = try CoreDataManager.shared.context.fetch(fetchRequest)
         return movieDetail

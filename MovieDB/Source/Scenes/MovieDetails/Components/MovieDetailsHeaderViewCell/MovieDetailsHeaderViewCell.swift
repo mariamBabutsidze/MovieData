@@ -24,6 +24,7 @@ class MovieDetailsHeaderViewCell: UITableViewCell {
     @IBOutlet private weak var favouriteButton: UIButton!
     private var movieDetails: MovieDetails?
     private var imageUrls: [URL]?
+    private var isFav = false
     
     weak var delegate: MovieDetailsHeaderViewCellDelegate?
     
@@ -56,6 +57,7 @@ class MovieDetailsHeaderViewCell: UITableViewCell {
     }
     
     func fill(with movieDetails: MovieDetails){
+        isFav = movieDetails.isFavourite
         ratingView.isHidden = false
         titleLabel.isHidden = false
         self.movieDetails = movieDetails
@@ -67,7 +69,7 @@ class MovieDetailsHeaderViewCell: UITableViewCell {
         }
         rateView?.setRating(rating: movieDetails.vote, numberOfRates: movieDetails.voteCount)
         titleLabel.text = movieDetails.title
-        favouriteButton.setImage(UIImage(named: movieDetails.isFavourite ? "heart_full" : "heart"))
+        favouriteButton.setImage(UIImage(named: isFav ? "heart_full" : "heart"))
         collectionView.reloadData()
     }
     
@@ -113,8 +115,8 @@ extension MovieDetailsHeaderViewCell{
     }
     
     @IBAction func favouriteClicked(_ sender: Any) {
-        movieDetails?.isFavourite.toggle()
-        update(favourite: movieDetails?.isFavourite ?? false)
+        isFav.toggle()
+        update(favourite: isFav)
         delegate?.favouriteClicked()
     }
 }

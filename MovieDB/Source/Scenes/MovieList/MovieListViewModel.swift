@@ -19,6 +19,7 @@ protocol MovieListViewModelType {
 protocol MovieListViewModelInputs {
     func loadMovies(refresh: Bool)
     func changeFilters(type: Filter)
+    func changeMovie(id: Int) -> Bool
 }
 
 protocol MovieListViewModelOutputs: ErrorViewModelProtocol {
@@ -52,25 +53,39 @@ extension MovieListViewModel: MovieListViewModelInputs {
     func loadMovies(refresh: Bool){
         if !loading && (page == 1 || page < pageNumber){
             loading = true
-            page = refresh ? 1 : (page + 1)
+            page = refresh || filters.contains(Filter.favourite) ? 1 : (page + 1)
             let avg : Int? = filters.contains(Filter.topRated) ? average : nil
             let sum : Int? = filters.contains(Filter.popular) ? count : nil
-            Movies.load(page: page, count: sum, average: avg, success: { [weak self]  movies in
-                let page = movies?.page
-                let res = movies?.results ?? []
-                if page == 1{
-                    self?.pageNumber = movies?.totalResults ?? .zero
-                    self?.movies.removeAll()
-                }
-                let fav = self?.filters.contains(Filter.favourite) ?? false
-                res.forEach({
-                    if (fav && $0.isFavourite) || !fav{
-                        self?.movies.append($0)
+            if refresh != false || !filters.contains(Filter.favourite){
+                Movies.load(page: page, count: sum, average: avg, success: { [weak self]  movies in
+                    let page = movies?.page
+                    let res = movies?.results ?? []
+                    if page == 1{
+                        self?.pageNumber = movies?.totalResults ?? .zero
+                        self?.movies.removeAll()
                     }
-                })
-                self?.loading = false
-                self?._moviesDidLoad.accept(())
-            }, fail: self.standardFailBlock)
+                    let fav = self?.filters.contains(Filter.favourite) ?? false
+                    var favourites: [MovieDetails] = []
+                    if fav && sum == nil && avg == nil{
+                        do{
+                            favourites = try MovieDetails.fetchSavedMovieDetails()
+                            favourites.forEach({
+                                self?.movies.append(Movie(id: $0.id, icon: $0.iconURLValue, isFavourite: true))
+                            })
+                        } catch{ }
+                    } else{
+                        res.forEach({
+                            if (fav && $0.isFavourite) || !fav{
+                                self?.movies.append($0)
+                            }
+                        })
+                    }
+                    self?.loading = false
+                    self?._moviesDidLoad.accept(())
+                    }, fail: self.standardFailBlock)
+            } else{
+                loading = false
+            }
         }
     }
     
@@ -81,6 +96,18 @@ extension MovieListViewModel: MovieListViewModelInputs {
             filters.append(type)
         }
         loadMovies(refresh: true)
+    }
+    
+    func changeMovie(id: Int) -> Bool{
+        if let item = movies.filter({ $0.id == id}).first{
+            item.isFavourite.toggle()
+            if filters.contains(Filter.favourite){
+                movies.remove({ $0.id == id })
+                return true
+            }
+            return false
+        }
+        return false
     }
 }
 

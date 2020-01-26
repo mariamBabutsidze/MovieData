@@ -8,6 +8,7 @@ def shared_pods
     pod 'SwiftyJSON'
     pod 'SVProgressHUD'
     pod 'SnapKit'
+    pod 'AXPhotoViewer'
     rx_pods
 end
 

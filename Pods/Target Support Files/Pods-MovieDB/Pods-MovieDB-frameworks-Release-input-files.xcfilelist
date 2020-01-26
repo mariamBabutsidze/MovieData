@@ -1,5 +1,8 @@
 ${PODS_ROOT}/Target Support Files/Pods-MovieDB/Pods-MovieDB-frameworks.sh
+${BUILT_PRODUCTS_DIR}/AXPhotoViewer/AXPhotoViewer.framework
+${BUILT_PRODUCTS_DIR}/AXStateButton/AXStateButton.framework
 ${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework
+${BUILT_PRODUCTS_DIR}/FLAnimatedImage/FLAnimatedImage.framework
 ${BUILT_PRODUCTS_DIR}/RDExtensionsSwift/RDExtensionsSwift.framework
 ${BUILT_PRODUCTS_DIR}/ReachabilitySwift/Reachability.framework
 ${BUILT_PRODUCTS_DIR}/RxCocoa/RxCocoa.framework

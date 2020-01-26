@@ -41,7 +41,12 @@ class MovieListViewController: UIViewController {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
-        navigationController?.setNavigationBarHidden(true, animated: true)
+        navigationController?.setNavigationBarHidden(true, animated: false)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        navigationController?.setNavigationBarHidden(true, animated: false)
     }
     
     private func setupCollectionView(){
@@ -96,5 +101,11 @@ extension MovieListViewController: UICollectionViewDelegate, UICollectionViewDat
             return cell
         }
         return UICollectionViewCell()
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let item = viewModel.outputs.itemAt(index: indexPath)
+        let moviewDetails = MovieDetailsViewController.load(with: MovieDetailsViewModel(id: item.id))
+        navigationController?.pushViewController(moviewDetails, animated: true)
     }
 }

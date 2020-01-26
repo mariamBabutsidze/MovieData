@@ -55,6 +55,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             connection = true
         case .cellular:
             print("Reachable via Cellular")
+            change(connection: true)
+            connection = true
         case .unavailable:
             print("isjdf")
             change(connection: false)
@@ -67,11 +69,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     private func change(connection: Bool){
         if self.connection != connection{
             if connection{
-                self.window?.rootViewController?.dismiss(animated: true, completion: nil)
+                if let nav = self.window?.rootViewController as? MovieNavigationController{
+                    nav.popViewController(animated: false)
+                }
             } else{
                 let noInternet = NoInternetViewController.loadFromStoryboard()
-                noInternet.modalPresentationStyle = .fullScreen
-                self.window?.rootViewController?.present(on: noInternet)
+                if let nav = self.window?.rootViewController as? MovieNavigationController{
+                    nav.pushViewController(noInternet, animated: false)
+                }
             }
         }
     }

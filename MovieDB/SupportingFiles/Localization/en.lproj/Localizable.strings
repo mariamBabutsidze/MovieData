@@ -11,3 +11,7 @@
 "MovieDetailsOverview" = "Overview";
 "MovieDetailsReleaseDate" = "Release Date";
 
+// MARK: NoInternet
+"NoInternetError" = "Error";
+"NoInternetDescription" = "Connection could not be made.";
+"NoInternetButtonTitle" = "Try Again";

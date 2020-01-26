@@ -92,6 +92,10 @@ extension MovieDetailsViewController: UITableViewDelegate, UITableViewDataSource
             return UITableView.automaticDimension
         }
     }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return .zero
+    }
 }
 
 extension MovieDetailsViewController: MovieDetailsHeaderViewCellDelegate{
@@ -100,6 +104,7 @@ extension MovieDetailsViewController: MovieDetailsHeaderViewCellDelegate{
     }
     
     func dismiss() {
+        stopLoader()
         navigationController?.popViewController(animated: true)
     }
     

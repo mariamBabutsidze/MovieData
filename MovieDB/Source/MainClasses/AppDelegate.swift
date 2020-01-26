@@ -12,6 +12,7 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
     
     var window: UIWindow?
+    private var connection = true
 
     private func setupWindow()
     {
@@ -30,11 +31,53 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         self.window?.makeKeyAndVisible()
     }
+    
+    private func addReachability(){
+        reachability = try! Reachability()
+        NotificationCenter.default.addObserver(self, selector: #selector(reachabilityChanged(note:)), name: .reachabilityChanged, object: reachability)
+        do{
+            try reachability?.startNotifier()
+        }catch{
+            print("could not start reachability notifier")
+        }
+    }
+    
+    @objc func reachabilityChanged(note: Notification) {
+        
+        let reachability = note.object as! Reachability
+        
+        switch reachability.connection {
+        case .wifi:
+            print("sufh")
+            change(connection: true)
+            connection = true
+        case .cellular:
+            print("Reachable via Cellular")
+        case .unavailable:
+            print("isjdf")
+            change(connection: false)
+            connection = false
+        case .none:
+            break
+        }
+    }
+    
+    private func change(connection: Bool){
+        if self.connection != connection{
+            dismiss(animated: false, completion: nil)
+            if connection{
+                
+            } else{
+                
+                   
+            }
+        }
+    }
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         setupWindow()
-        
+        addReachability()
         return true
     }
 }

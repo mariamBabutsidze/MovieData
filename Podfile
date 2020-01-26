@@ -9,6 +9,7 @@ def shared_pods
     pod 'SVProgressHUD'
     pod 'SnapKit'
     pod 'AXPhotoViewer'
+    pod 'ReachabilitySwift'
     rx_pods
 end
 

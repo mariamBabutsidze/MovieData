@@ -26,6 +26,8 @@
 		747B5E9023DD8F6600AE7E5C /* MovieDetailsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 747B5E8E23DD8F6600AE7E5C /* MovieDetailsTableViewCell.xib */; };
 		747B5E9423DD909200AE7E5C /* MovieDetailsDataTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 747B5E9223DD909200AE7E5C /* MovieDetailsDataTableViewCell.swift */; };
 		747B5E9523DD909200AE7E5C /* MovieDetailsDataTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 747B5E9323DD909200AE7E5C /* MovieDetailsDataTableViewCell.xib */; };
+		747B5E9923DD965F00AE7E5C /* NoInternetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 747B5E9723DD965F00AE7E5C /* NoInternetViewController.swift */; };
+		747B5E9A23DD965F00AE7E5C /* NoInternet.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 747B5E9823DD965F00AE7E5C /* NoInternet.storyboard */; };
 		74B290FA23DC93D800398EF5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74B290F923DC93D800398EF5 /* AppDelegate.swift */; };
 		74B2910323DC93DB00398EF5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 74B2910223DC93DB00398EF5 /* Assets.xcassets */; };
 		74B2913923DCA58F00398EF5 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74B2913823DCA58F00398EF5 /* Extensions.swift */; };
@@ -103,6 +105,8 @@
 		747B5E8E23DD8F6600AE7E5C /* MovieDetailsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MovieDetailsTableViewCell.xib; sourceTree = "<group>"; };
 		747B5E9223DD909200AE7E5C /* MovieDetailsDataTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailsDataTableViewCell.swift; sourceTree = "<group>"; };
 		747B5E9323DD909200AE7E5C /* MovieDetailsDataTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MovieDetailsDataTableViewCell.xib; sourceTree = "<group>"; };
+		747B5E9723DD965F00AE7E5C /* NoInternetViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoInternetViewController.swift; sourceTree = "<group>"; };
+		747B5E9823DD965F00AE7E5C /* NoInternet.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = NoInternet.storyboard; sourceTree = "<group>"; };
 		74B290F623DC93D800398EF5 /* MovieDB.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MovieDB.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		74B290F923DC93D800398EF5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		74B2910223DC93DB00398EF5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -252,6 +256,7 @@
 		747B5E8623DD826900AE7E5C /* Reusables */ = {
 			isa = PBXGroup;
 			children = (
+				747B5E9623DD965F00AE7E5C /* NoInternet */,
 				747B5E8723DD826900AE7E5C /* RatingView */,
 			);
 			path = Reusables;
@@ -283,6 +288,15 @@
 				747B5E9323DD909200AE7E5C /* MovieDetailsDataTableViewCell.xib */,
 			);
 			path = MovieDetailsDataTableViewCell;
+			sourceTree = "<group>";
+		};
+		747B5E9623DD965F00AE7E5C /* NoInternet */ = {
+			isa = PBXGroup;
+			children = (
+				747B5E9723DD965F00AE7E5C /* NoInternetViewController.swift */,
+				747B5E9823DD965F00AE7E5C /* NoInternet.storyboard */,
+			);
+			path = NoInternet;
 			sourceTree = "<group>";
 		};
 		74B290ED23DC93D800398EF5 = {
@@ -683,6 +697,7 @@
 				74B291F823DCEF9200398EF5 /* Poppins-SemiBoldItalic.ttf in Resources */,
 				74B291FC23DCEF9200398EF5 /* Poppins-Regular.ttf in Resources */,
 				747B5E7D23DD7C2D00AE7E5C /* MovieDetailsHeaderViewCell.xib in Resources */,
+				747B5E9A23DD965F00AE7E5C /* NoInternet.storyboard in Resources */,
 				74B291FE23DCEF9200398EF5 /* Poppins-Bold.ttf in Resources */,
 				747B5E8B23DD826900AE7E5C /* RatingView.xib in Resources */,
 				74B291F423DCEF9200398EF5 /* Poppins-ExtraLightItalic.ttf in Resources */,
@@ -778,6 +793,7 @@
 				74B2914A23DCA7B400398EF5 /* Network+Status.swift in Sources */,
 				74B2914F23DCA7B400398EF5 /* Network+Reachability.swift in Sources */,
 				74B2918223DCAD9600398EF5 /* User.swift in Sources */,
+				747B5E9923DD965F00AE7E5C /* NoInternetViewController.swift in Sources */,
 				74B2917A23DCAC2C00398EF5 /* ErrorViewModel.swift in Sources */,
 				74B2916023DCAA3B00398EF5 /* Fonts.swift in Sources */,
 				74B2918723DCB07600398EF5 /* MovieNavigationController.swift in Sources */,

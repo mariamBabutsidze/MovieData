@@ -44,9 +44,9 @@ class MovieListViewController: UIViewController {
         navigationController?.setNavigationBarHidden(true, animated: false)
     }
     
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        navigationController?.setNavigationBarHidden(true, animated: false)
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
+        collectionView.collectionViewLayout.invalidateLayout()
     }
     
     private func setupCollectionView(){
@@ -54,11 +54,10 @@ class MovieListViewController: UIViewController {
         collectionView.dataSource = self
         refreshControlSpinner.tintColor = UIColor.MovieDB.green
         collectionView.contentInset = UIEdgeInsets(top: .zero, left: insets, bottom: .zero, right: insets)
-        let collectionWidth = collectionView.frame.width - 2 * insets
+        let collectionWidth = view.frame.width - 2 * insets
         if let flowLayout = collectionView?.collectionViewLayout as? UICollectionViewFlowLayout {
             flowLayout.minimumInteritemSpacing = 10 * Constants.ScreenFactor
             let width = (collectionWidth - flowLayout.minimumInteritemSpacing * CGFloat(tourCount - 1))/CGFloat(tourCount)
-            //flowLayout.estimatedItemSize = CGSize(width: width, height: width)
             flowLayout.itemSize = CGSize(width: width, height: width)
         }
         collectionView.register(UINib.init(nibName: MovieListCollectionViewCell.className, bundle: nil), forCellWithReuseIdentifier: MovieListCollectionViewCell.reuseIdentifier)

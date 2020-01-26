@@ -7,12 +7,14 @@
 //
 
 import UIKit
+import Reachability
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
     
     var window: UIWindow?
     private var connection = true
+    private var reachability: Reachability?
 
     private func setupWindow()
     {
@@ -64,12 +66,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     private func change(connection: Bool){
         if self.connection != connection{
-            dismiss(animated: false, completion: nil)
             if connection{
-                
+                self.window?.rootViewController?.dismiss(animated: true, completion: nil)
             } else{
-                
-                   
+                let noInternet = NoInternetViewController.loadFromStoryboard()
+                noInternet.modalPresentationStyle = .fullScreen
+                self.window?.rootViewController?.present(on: noInternet)
             }
         }
     }

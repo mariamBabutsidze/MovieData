@@ -43,6 +43,7 @@ class MovieDetailsViewController: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
         tableView.register(UINib(nibName: MovieDetailsHeaderViewCell.className, bundle: nil), forCellReuseIdentifier: MovieDetailsHeaderViewCell.reuseIdentifier)
+        tableView.register(UINib(nibName: MovieDetailsTableViewCell.className, bundle: nil), forCellReuseIdentifier: MovieDetailsTableViewCell.reuseIdentifier)
     }
     
     private func bindObservables(){
@@ -60,13 +61,20 @@ class MovieDetailsViewController: UIViewController {
 
 extension MovieDetailsViewController: UITableViewDelegate, UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        return viewModel.outputs.numberOfRows()
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.row == 0{
             if let cell = tableView.dequeueReusableCell(withIdentifier: MovieDetailsHeaderViewCell.reuseIdentifier, for: indexPath) as? MovieDetailsHeaderViewCell{
                 cell.delegate = self
+                if let movieDetails = viewModel.outputs.getMovieDetails(){
+                    cell.fill(with: movieDetails)
+                }
+                return cell
+            }
+        } else{
+            if let cell = tableView.dequeueReusableCell(withIdentifier: MovieDetailsTableViewCell.reuseIdentifier, for: indexPath) as? MovieDetailsTableViewCell{
                 if let movieDetails = viewModel.outputs.getMovieDetails(){
                     cell.fill(with: movieDetails)
                 }

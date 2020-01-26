@@ -23,6 +23,7 @@ protocol MovieDetailsViewModelInputs {
 protocol MovieDetailsViewModelOutputs: ErrorViewModelProtocol {
     var movieDidLoad: Observable<Void> { get }
     func getMovieDetails() -> MovieDetails?
+    func numberOfRows() -> Int
 }
 
 class MovieDetailsViewModel {
@@ -32,6 +33,7 @@ class MovieDetailsViewModel {
     let movieDidLoad: Observable<Void>
     private var movieDetails: MovieDetails?
     private var id: Int?
+    private let numberOfRow = 2
     
     init(id: Int)
     {
@@ -60,6 +62,9 @@ extension MovieDetailsViewModel: MovieDetailsViewModelOutputs {
         return movieDetails
     }
     
+    func numberOfRows() -> Int{
+        return numberOfRow
+    }
 }
 
 // MARK: - MovieDetailsViewModelType

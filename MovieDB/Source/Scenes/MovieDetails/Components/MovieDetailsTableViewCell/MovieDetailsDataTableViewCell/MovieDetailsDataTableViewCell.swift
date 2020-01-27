@@ -26,6 +26,7 @@ class MovieDetailsDataTableViewCell: UITableViewCell {
     func fill(with title: String, desc: String){
         titleLabel.text = title
         descriptionTextView.text = desc
+        descriptionTextView.isUserInteractionEnabled = false
     }
     
 }

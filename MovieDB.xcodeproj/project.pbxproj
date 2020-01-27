@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		399E3557E4F0222E29DBB514 /* Pods_MovieDB.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 26BAAA066A46A9502DB1FDD7 /* Pods_MovieDB.framework */; };
-		747B5E6523DD738100AE7E5C /* APIKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 747B5E6423DD738100AE7E5C /* APIKeys.swift */; };
 		747B5E6823DD742100AE7E5C /* MovieDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 747B5E6723DD742100AE7E5C /* MovieDetailsViewController.swift */; };
 		747B5E6A23DD742D00AE7E5C /* MovieDetails.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 747B5E6923DD742D00AE7E5C /* MovieDetails.storyboard */; };
 		747B5E6C23DD745400AE7E5C /* MovieDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 747B5E6B23DD745400AE7E5C /* MovieDetailsViewModel.swift */; };
@@ -95,7 +94,6 @@
 /* Begin PBXFileReference section */
 		220D0A8FE7F6A567FCCF002C /* Pods-MovieDB.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MovieDB.release.xcconfig"; path = "Target Support Files/Pods-MovieDB/Pods-MovieDB.release.xcconfig"; sourceTree = "<group>"; };
 		26BAAA066A46A9502DB1FDD7 /* Pods_MovieDB.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MovieDB.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		747B5E6423DD738100AE7E5C /* APIKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIKeys.swift; sourceTree = "<group>"; };
 		747B5E6723DD742100AE7E5C /* MovieDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailsViewController.swift; sourceTree = "<group>"; };
 		747B5E6923DD742D00AE7E5C /* MovieDetails.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MovieDetails.storyboard; sourceTree = "<group>"; };
 		747B5E6B23DD745400AE7E5C /* MovieDetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailsViewModel.swift; sourceTree = "<group>"; };
@@ -532,7 +530,6 @@
 				74B2915C23DCAA3B00398EF5 /* Fonts.swift */,
 				74B2915D23DCAA3B00398EF5 /* Language.swift */,
 				74B2913B23DCA68400398EF5 /* Constants.swift */,
-				747B5E6423DD738100AE7E5C /* APIKeys.swift */,
 			);
 			path = Constants;
 			sourceTree = "<group>";
@@ -833,7 +830,6 @@
 				747B5E6F23DD756900AE7E5C /* MovieDetails.swift in Sources */,
 				74B2916323DCAA6600398EF5 /* Locale.swift in Sources */,
 				747B5E8A23DD826900AE7E5C /* RatingView.swift in Sources */,
-				747B5E6523DD738100AE7E5C /* APIKeys.swift in Sources */,
 				74B291D923DCD51200398EF5 /* RDTapGestureRecognizer.swift in Sources */,
 				74B2917C23DCAC2C00398EF5 /* Utilities.swift in Sources */,
 				747B5E9423DD909200AE7E5C /* MovieDetailsDataTableViewCell.swift in Sources */,
@@ -1024,6 +1020,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 6942GF4LQ5;
 				INFOPLIST_FILE = MovieDB/SupportingFiles/InfoFiles/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1043,6 +1040,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 6942GF4LQ5;
 				INFOPLIST_FILE = MovieDB/SupportingFiles/InfoFiles/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (

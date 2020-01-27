@@ -78,14 +78,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     private func change(connection: Bool){
         if self.connection != connection{
             if connection{
-                if let nav = self.window?.rootViewController as? MovieNavigationController{
-                    nav.popViewController(animated: false)
-                }
+                self.window?.rootViewController?.dismiss(animated: true, completion: nil)
             } else{
                 let noInternet = NoInternetViewController.loadFromStoryboard()
-                if let nav = self.window?.rootViewController as? MovieNavigationController{
-                    nav.pushViewController(noInternet, animated: false)
-                }
+                noInternet.modalPresentationStyle = .fullScreen
+                self.window?.rootViewController?.present(noInternet)
             }
         }
     }

@@ -1,6 +1,6 @@
 # MovieData
 
-Add api key in MovieDB/Source/Core/APIKeys.swift dbKey
+Add api key in MovieDB/Source/Core/Constants/APIKeys.swift dbKey
 
 RDExtensionsSwift  using for extensions
 Alamofire using for networking

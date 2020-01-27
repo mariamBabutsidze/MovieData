@@ -2,7 +2,6 @@
 #
 # gitignore contributors: remember to update Global/Xcode.gitignore, Objective-C.gitignore & Swift.gitignore
 
-APIKeys.swift
 MovieDB.xcodeproj/xcuserdata/
 MovieDB.xcodeproj/project.xcworkspace/xcuserdata/
 MovieDB.xcworkspace/xcuserdata/
